@@ -1,3 +1,4 @@
+let listaDeNumeroSorteaods = [];
 let numeroSecreto;
 let tentativas;
 
@@ -6,8 +7,16 @@ function exibirNaTela(tag, texto) {
     campo.innerHTML = texto;
 }
 
-function gerarNumeroAleatorio(params) {
-    return parseInt(Math.random() * 10 + 1);
+function gerarNumeroAleatorio() {
+    let numeroEscolhido = parseInt(Math.random() * 10 + 1);
+    if (listaDeNumeroSorteaods.includes(numeroEscolhido) && listaDeNumeroSorteaods.length < 10) {
+        return gerarNumeroAleatorio()
+    } else {
+        listaDeNumeroSorteaods.push(numeroEscolhido);
+        console.log(listaDeNumeroSorteaods);
+    }
+
+    return numeroEscolhido
 }
 
 function limparCampo() {
